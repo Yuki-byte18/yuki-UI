@@ -2,7 +2,8 @@
 
 基于 Vue 3 + TypeScript + SCSS 手写的组件库，pnpm monorepo 结构，边写边学的那一种。
 
-![license](https://img.shields.io/badge/license-MIT-blue.svg)
+![license](https://img.shields.io/github/license/Yuki-byte18/yuki-UI)
+![stars](https://img.shields.io/github/stars/Yuki-byte18/yuki-UI?style=flat)
 ![vue](https://img.shields.io/badge/vue-3.x-42b883.svg)
 ![typescript](https://img.shields.io/badge/typescript-5.x-3178c6.svg)
 ![pnpm](https://img.shields.io/badge/pnpm-workspace-f69220.svg)
@@ -19,11 +20,13 @@
 
 ## 文档
 
-```bash
-pnpm doc:dev        # 本地启动文档，默认 http://localhost:5173/
-```
+- 在线文档：（Vercel 部署完成后把地址填到这里，比如 `https://yuki-ui.vercel.app`）
+- 源码仓库：[github.com/Yuki-byte18/yuki-UI](https://github.com/Yuki-byte18/yuki-UI)
+- 本地启动文档：
 
-在线文档地址：（部署到 Vercel 之后把地址填到这里）
+```bash
+pnpm doc:dev        # 默认 http://localhost:5173/
+```
 
 ## 安装
 

@@ -12,7 +12,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Yuki-byte18/yuki-ui.git",
+    "url": "https://github.com/Yuki-byte18/yuki-UI.git",
     "directory": "packages/utils"
   },
   "scripts": {

@@ -11,7 +11,18 @@ module.exports = {
   // 1.x 里这个是布尔值：显示每一页的"最后更新时间"（取自 git 提交记录）
   lastUpdated: true,
 
+  // 站点图标（文件在 docs/public/favicon.svg，VitePress 会把 public 目录原样拷到产物根目录）
+  head: [['link', { rel: 'icon', href: '/favicon.svg', type: 'image/svg+xml' }]],
+
+  // 部署好之后把下面这段打开，搜索引擎收录会更规范（hostname 换成你真实的 Vercel 域名）
+  // sitemap: {
+  //   hostname: 'https://yuki-ui.vercel.app'
+  // },
+
   themeConfig: {
+    // 导航栏左边的小图标（不想要这一行删掉即可）
+    logo: '/favicon.svg',
+
     nav: [
       { text: '指南', link: '/guide/installation', activeMatch: '/guide/' },
       { text: '组件', link: '/component/icon', activeMatch: '/component/' }
@@ -54,7 +65,7 @@ module.exports = {
 
     // 1.x 的写法：编辑此页的链接
     editLink: {
-      pattern: 'https://github.com/Yuki-byte18/yuki-ui/edit/main/docs/:path',
+      pattern: 'https://github.com/Yuki-byte18/yuki-UI/edit/main/docs/:path',
       text: '在 GitHub 上编辑此页'
     },
 
