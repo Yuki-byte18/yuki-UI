@@ -1,0 +1,194 @@
+@use './mixins/mixins.scss' as *;
+
+@include b(tree) {
+  --yuki-tree-node-height: 34px;
+
+  position: relative;
+  color: var(--yuki-text-color-regular);
+  font-size: var(--yuki-font-size-base);
+  line-height: 1.4;
+
+  //空数据
+  @include e(empty) {
+    padding: 14px 0;
+    color: var(--yuki-text-color-secondary);
+    font-size: var(--yuki-font-size-small);
+    text-align: center;
+  }
+
+  @include e(node) {
+    position: relative;
+  }
+
+  //一行的内容区 鼠标点它就算点这个节点
+  @include e(node-content) {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: var(--yuki-tree-node-height);
+    padding-right: 10px;
+    border-radius: var(--yuki-border-radius-small);
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s, color 0.2s;
+
+    &:hover {
+      background-color: var(--yuki-fill-color-light);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--yuki-color-primary-light-7);
+      outline-offset: -2px;
+    }
+
+    //当前选中的节点
+    @include when(current) {
+      background-color: var(--yuki-color-primary-light-9);
+      color: var(--yuki-color-primary);
+      font-weight: 600;
+    }
+
+    //禁用的节点
+    @include when(disabled) {
+      color: var(--yuki-text-color-disabled);
+      cursor: not-allowed;
+
+      &:hover {
+        background-color: transparent;
+      }
+    }
+  }
+
+  //展开/收起的三角箭头
+  @include e(expand-icon) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: var(--yuki-text-color-placeholder);
+    border-radius: var(--yuki-border-radius-small);
+    transition: transform 0.25s var(--yuki-transition-function), color 0.2s;
+
+    svg {
+      width: 10px;
+      height: 10px;
+    }
+
+    &:hover {
+      color: var(--yuki-color-primary);
+    }
+
+    //展开的时候三角转90度 变成朝下
+    @include when(expanded) {
+      transform: rotate(90deg);
+    }
+
+    //叶子节点没有箭头 用 visibility 隐藏(还占着位置 这样文字缩进才是对齐的)
+    @include when(leaf) {
+      visibility: hidden;
+    }
+  }
+
+  //复选框
+  @include e(checkbox) {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 15px;
+    height: 15px;
+    flex-shrink: 0;
+    border: 1.5px solid var(--yuki-border-color-dark);
+    border-radius: 4px;
+    background-color: var(--yuki-fill-color-blank);
+    transition: background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+
+    &:hover {
+      border-color: var(--yuki-color-primary);
+    }
+
+    @include when(checked) {
+      border-color: var(--yuki-color-primary);
+      background-color: var(--yuki-color-primary);
+    }
+
+    @include when(indeterminate) {
+      border-color: var(--yuki-color-primary);
+      background-color: var(--yuki-color-primary);
+    }
+
+    @include when(disabled) {
+      border-color: var(--yuki-border-color-light);
+      background-color: var(--yuki-fill-color-light);
+      cursor: not-allowed;
+    }
+  }
+
+  //复选框里的"对勾" 用两条边框拼出来(不用图片 不用字体图标)
+  @include e(checkbox-inner) {
+    width: 8px;
+    height: 4px;
+    margin-top: -2px;
+    border: 2px solid #ffffff;
+    border-top: 0;
+    border-right: 0;
+    transform: rotate(-45deg) scale(0);
+    transition: transform 0.15s var(--yuki-transition-function);
+  }
+
+  @include e(label) {
+    flex: 1;
+    min-width: 0;
+    @include ellipsis;
+  }
+
+  //子节点容器
+  @include e(children) {
+    overflow: hidden;
+    animation: yuki-tree-expand 0.22s var(--yuki-transition-function);
+  }
+
+  //复选框选中/半选的时候 让里面的对勾显示出来
+  //注意：这是"元素里套元素" 用 e() 拼会得到 .yuki-tree__checkbox__checkbox-inner 这种非法bem
+  //所以这里直接写类名(元素内部的小装饰 不属于对外暴露的bem结构)
+  .yuki-tree__checkbox.is-checked .yuki-tree__checkbox-inner {
+    transform: rotate(-45deg) scale(1);
+  }
+
+  //半选状态：对勾变成一条横杠
+  .yuki-tree__checkbox.is-indeterminate .yuki-tree__checkbox-inner {
+    width: 8px;
+    height: 0;
+    margin-top: 0;
+    border-width: 2px 0 0 0;
+    transform: none;
+  }
+
+  //======================= 连接线模式 =======================
+  //同样是"块套元素" 直接写类名
+  @include when(show-line) {
+    .yuki-tree__node-content {
+      position: relative;
+    }
+
+    .yuki-tree__children {
+      position: relative;
+      margin-left: 7px;
+      border-left: 1px dashed var(--yuki-border-color);
+    }
+  }
+}
+
+//子节点展开时的小动画
+@keyframes yuki-tree-expand {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

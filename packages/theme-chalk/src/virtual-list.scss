@@ -1,0 +1,37 @@
+@use './mixins/mixins.scss' as *;
+
+@include b(virtual-list) {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  //滚动条的样式统一一下 细一点更精致
+  @include scrollbar;
+
+  //撑开滚动条的影子元素 高度由js算
+  @include e(phantom) {
+    position: relative;
+    width: 100%;
+  }
+
+  //真正渲染出来的那几条
+  @include e(content) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    //transform 变化不会引起重排 滚动更流畅
+    will-change: transform;
+  }
+
+  @include e(item) {
+    box-sizing: border-box;
+    overflow: hidden;
+  }
+
+  @include e(empty) {
+    @include flex-center;
+    height: 100%;
+    color: var(--yuki-text-color-secondary);
+    font-size: var(--yuki-font-size-small);
+  }
+}

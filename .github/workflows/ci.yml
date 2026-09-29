@@ -1,0 +1,38 @@
+# CI：每次 push / PR 都跑一遍类型检查和文档构建
+# 用的是仓库里已有的根 package.json 脚本：pnpm typecheck / pnpm doc:build
+
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  check:
+    name: 类型检查与文档构建
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 拉取代码
+        uses: actions/checkout@v4
+
+      - name: 安装 pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: 安装 Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 类型检查（vue-tsc）
+        run: pnpm typecheck
+
+      - name: 构建文档（vitepress）
+        run: pnpm doc:build

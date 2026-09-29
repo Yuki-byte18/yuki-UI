@@ -1,0 +1,104 @@
+//这个文件主要用于定义scss函数 语法： @mixin 函数名 { 函数体 }
+//其次引入config.scss文件里面的变量使用 并且导出 （顺手的事）
+
+//引入config.scss文件里面的变量使用 并且导出 
+//意义：免得既要引入全局函数文件 又要引入全局变量文件 只用引入这个文件即可
+@use './config.scss' as *;
+@forward './config.scss';
+
+//定义几个全局可复用的css的scss函数
+
+//1，前缀+组件名 eg: .yuki-button { }
+@mixin b ($block) {
+  $B: $namespace + '-' + $block;
+  .#{$B} {
+    @content;
+  }
+}
+
+//2，前缀+组件名+elment分隔符 eg: .yuki-button__primary { }
+@mixin e ($element) {
+  @at-root {
+    #{&+#{$element-separator}#{$element}} {
+      @content;
+    }
+  }
+}
+
+//3,前缀+组件名+modifier分隔符 eg: .yuki-button--primary { }
+@mixin m ($modifier) {
+  @at-root {
+    #{&+$modifier-separator+$modifier} {
+      @content;
+    }
+  }
+}
+
+//4,状态前缀 eg: .is-primary { }
+//注意：变量名是 config.scss 里定义的 $status-prefix
+//(原来这里写的是 $state-prefix 变量名对不上 所以一调用就报 Undefined variable)
+@mixin when ($state) {
+  @at-root {
+    &.#{$status-prefix+$state} {
+      @content;
+    }
+  }
+}
+
+//=====================================================================
+//以下是公共工具函数(和具体组件无关 哪个组件都能用)
+//=====================================================================
+
+//5,单行文本溢出显示省略号
+@mixin ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+//6,多行文本溢出显示省略号
+@mixin ellipsis-multi($line: 2) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: $line;
+  overflow: hidden;
+}
+
+//7,flex居中 (水平垂直都居中)
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//8,自定义滚动条 (细滚动条 更精致)
+@mixin scrollbar($size: 6px, $thumb: rgba(144, 147, 153, 0.4)) {
+  &::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: $size;
+    background-color: $thumb;
+
+    &:hover {
+      background-color: rgba(144, 147, 153, 0.7);
+    }
+  }
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+}
+
+//9,一键生成某个颜色的深色变体(用于hover/active时的颜色变化)
+//配合 @include m(primary) 使用 生成 --primary:hover / --primary:active
+@mixin color-variants($color) {
+  &:hover {
+    background-color: light-mix($color, 20%);
+    border-color: light-mix($color, 20%);
+  }
+  &:active {
+    background-color: dark-mix($color, 10%);
+    border-color: dark-mix($color, 10%);
+  }
+}

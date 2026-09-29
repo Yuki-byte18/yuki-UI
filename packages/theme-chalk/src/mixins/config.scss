@@ -1,0 +1,107 @@
+//这个文件用于定义全局可复用的 scss 变量 
+//语法是 $变量名: 值
+
+//引入sass官方的颜色模块 用来做颜色混合(生成浅色/深色梯度)
+@use 'sass:color';
+
+//1,css变量名前缀
+$namespace: 'yuki';
+
+//2,elment分隔符
+$element-separator: '__';
+
+//3,modifier分隔符
+$modifier-separator: '--';
+
+//4,状态前缀
+$status-prefix: 'is-';
+
+
+//总体sccs变量名结构：
+//前缀 - 组件名 - B __ M -- E
+
+//=====================================================================
+//以下是组件库的"设计变量"(设计令牌 design token)
+//所有组件样式都从这里取值 改这里就能整体换肤 不用去每个组件里改
+//=====================================================================
+
+//5,主题色(品牌色)
+$color-primary: #6366f1;
+$color-success: #10b981;
+$color-warning: #f59e0b;
+$color-danger: #ef4444;
+$color-info: #909399;
+
+//6,颜色混合函数：把颜色和白色按比例混合 生成浅色梯度
+//light-mix($color-primary, 30%) => 30%白色 + 70%主题色 (颜色更浅)
+@function light-mix($color, $percent) {
+  @return color.mix(#ffffff, $color, $percent);
+}
+
+//7,颜色混合函数：把颜色和黑色按比例混合 生成深色梯度
+//dark-mix($color-danger, 20%) => 20%黑色 + 80%原色 (颜色更深)
+@function dark-mix($color, $percent) {
+  @return color.mix(#000000, $color, $percent);
+}
+
+//8,文字颜色
+$text-color-primary: #1f2329;
+$text-color-regular: #4e5969;
+$text-color-secondary: #86909c;
+$text-color-placeholder: #a8abb2;
+$text-color-disabled: #c0c4cc;
+
+//9,边框颜色
+$border-color: #dcdfe6;
+$border-color-light: #e4e7ed;
+$border-color-lighter: #ebeef5;
+$border-color-extra-light: #f2f6fc;
+$border-color-dark: #d4d7de;
+
+//10,填充色(用于hover背景等)
+$fill-color: #f0f2f5;
+$fill-color-light: #f5f7fa;
+$fill-color-lighter: #fafafa;
+$fill-color-blank: #ffffff;
+
+//11,背景色
+$bg-color: #ffffff;
+$bg-color-page: #f5f7fa;
+$bg-color-overlay: #ffffff;
+$mask-color: rgba(0, 0, 0, 0.5);
+
+//12,字体大小
+$font-size-extra-large: 20px;
+$font-size-large: 18px;
+$font-size-medium: 16px;
+$font-size-base: 14px;
+$font-size-small: 13px;
+$font-size-extra-small: 12px;
+
+//13,圆角
+$border-radius-base: 6px;
+$border-radius-small: 4px;
+$border-radius-round: 20px;
+$border-radius-circle: 50%;
+
+//14,阴影
+$box-shadow-base: 0 2px 12px rgba(0, 0, 0, 0.06);
+$box-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.04);
+$box-shadow-dark: 0 6px 22px rgba(0, 0, 0, 0.12);
+
+//15,动画过渡
+$transition-duration: 0.25s;
+$transition-function: cubic-bezier(0.645, 0.045, 0.355, 1);
+$transition-base: all $transition-duration $transition-function;
+
+//16,层级(z-index) 统一管理 免得组件之间互相盖住
+$index-normal: 1;
+$index-top: 1000;
+$index-popper: 2000;
+$index-message: 3000;
+$index-message-box: 4000;
+
+//17,组件默认尺寸(高度)
+$size-large: 40px;
+$size-default: 32px;
+$size-small: 24px;

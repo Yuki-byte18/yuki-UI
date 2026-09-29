@@ -1,0 +1,45 @@
+{
+  "name": "yuki-ui",
+  "version": "1.0.0",
+  "private": true,
+  "description": "基于 Vue 3 + TypeScript + SCSS 的组件库（pnpm monorepo）",
+  "keywords": [
+    "vue",
+    "vue3",
+    "typescript",
+    "scss",
+    "component-library",
+    "ui"
+  ],
+  "author": "Yuki-byte18",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yuki-byte18/yuki-ui.git"
+  },
+  "scripts": {
+    "dev": "pnpm -C play dev",
+    "build": "pnpm -C play build",
+    "typecheck": "pnpm -C play exec vue-tsc -b",
+    "doc:dev": "pnpm -C docs dev",
+    "doc:build": "pnpm -C docs build",
+    "doc:preview": "pnpm -C docs preview"
+  },
+  "packageManager": "pnpm@10.33.1",
+  "dependencies": {
+    "@yuki/components": "workspace:*",
+    "@yuki/theme-chalk": "workspace:*",
+    "@yuki/utils": "workspace:*",
+    "typescript": "^5.3.3",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^8.59.1",
+    "@typescript-eslint/parser": "^8.59.1",
+    "@vue/eslint-config-typescript": "^14.7.0",
+    "eslint": "^10.2.1",
+    "eslint-plugin-vue": "^10.9.0",
+    "sass": "^1.99.0",
+    "unplugin-vue-define-options": "^3.1.2"
+  }
+}

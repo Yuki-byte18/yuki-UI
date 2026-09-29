@@ -1,0 +1,89 @@
+//这个文件把 config.scss 里的设计变量 输出成 css 变量 挂到 :root 上
+//作用：css变量可以被运行时修改(比如用户自己换主题色) scss变量编译后就固定了
+//使用方式：组件样式里写 var(--yuki-color-primary) 就能拿到值
+
+@use './mixins/config.scss' as *;
+
+:root {
+  //主题色
+  --yuki-color-primary: #{$color-primary};
+  --yuki-color-success: #{$color-success};
+  --yuki-color-warning: #{$color-warning};
+  --yuki-color-danger: #{$color-danger};
+  --yuki-color-info: #{$color-info};
+  --yuki-color-white: #ffffff;
+
+  //主题色浅色梯度
+  --yuki-color-primary-light-3: #{light-mix($color-primary, 30%)};
+  --yuki-color-primary-light-5: #{light-mix($color-primary, 50%)};
+  --yuki-color-primary-light-7: #{light-mix($color-primary, 70%)};
+  --yuki-color-primary-light-8: #{light-mix($color-primary, 80%)};
+  --yuki-color-primary-light-9: #{light-mix($color-primary, 90%)};
+  --yuki-color-success-light-9: #{light-mix($color-success, 90%)};
+  --yuki-color-warning-light-9: #{light-mix($color-warning, 90%)};
+  --yuki-color-danger-light-9: #{light-mix($color-danger, 90%)};
+  --yuki-color-info-light-9: #{light-mix($color-info, 90%)};
+
+  //文字
+  --yuki-text-color-primary: #{$text-color-primary};
+  --yuki-text-color-regular: #{$text-color-regular};
+  --yuki-text-color-secondary: #{$text-color-secondary};
+  --yuki-text-color-placeholder: #{$text-color-placeholder};
+  --yuki-text-color-disabled: #{$text-color-disabled};
+
+  //边框
+  --yuki-border-color: #{$border-color};
+  --yuki-border-color-light: #{$border-color-light};
+  --yuki-border-color-lighter: #{$border-color-lighter};
+  --yuki-border-color-extra-light: #{$border-color-extra-light};
+  --yuki-border-color-dark: #{$border-color-dark};
+
+  //填充与背景
+  --yuki-fill-color: #{$fill-color};
+  --yuki-fill-color-light: #{$fill-color-light};
+  --yuki-fill-color-lighter: #{$fill-color-lighter};
+  --yuki-fill-color-blank: #{$fill-color-blank};
+  --yuki-bg-color: #{$bg-color};
+  --yuki-bg-color-page: #{$bg-color-page};
+  --yuki-bg-color-overlay: #{$bg-color-overlay};
+  --yuki-mask-color: #{$mask-color};
+
+  //字体
+  --yuki-font-size-extra-large: #{$font-size-extra-large};
+  --yuki-font-size-large: #{$font-size-large};
+  --yuki-font-size-medium: #{$font-size-medium};
+  --yuki-font-size-base: #{$font-size-base};
+  --yuki-font-size-small: #{$font-size-small};
+  --yuki-font-size-extra-small: #{$font-size-extra-small};
+
+  //圆角
+  --yuki-border-radius-base: #{$border-radius-base};
+  --yuki-border-radius-small: #{$border-radius-small};
+  --yuki-border-radius-round: #{$border-radius-round};
+
+  //阴影
+  --yuki-box-shadow-base: #{$box-shadow-base};
+  --yuki-box-shadow-light: #{$box-shadow-light};
+  --yuki-box-shadow-dark: #{$box-shadow-dark};
+
+  //过渡
+  --yuki-transition-duration: #{$transition-duration};
+  --yuki-transition-function: #{$transition-function};
+
+  //层级
+  --yuki-index-normal: #{$index-normal};
+  --yuki-index-top: #{$index-top};
+  --yuki-index-popper: #{$index-popper};
+  --yuki-index-message: #{$index-message};
+  --yuki-index-message-box: #{$index-message-box};
+}
+
+//全局的基础重置 只管组件库需要的最小范围 不破坏使用者的页面样式
+.yuki-icon,
+.yuki-button,
+.yuki-tag,
+.yuki-tree,
+.yuki-virtual-list,
+.yuki-message-box {
+  box-sizing: border-box;
+}

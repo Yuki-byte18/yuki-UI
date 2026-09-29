@@ -1,0 +1,22 @@
+{
+  "name": "@yuki/utils",
+  "version": "1.0.0",
+  "description": "YUKI-UI 组件库的工具包（BEM 类名生成、withInstall 注册工具）",
+  "keywords": [
+    "yuki-ui",
+    "vue3",
+    "bem",
+    "utils"
+  ],
+  "author": "Yuki-byte18",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Yuki-byte18/yuki-ui.git",
+    "directory": "packages/utils"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "packageManager": "pnpm@10.33.1"
+}

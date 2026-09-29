@@ -1,0 +1,46 @@
+@use './mixins/mixins.scss' as *;
+
+@include b(icon) {
+  //组件内部统一用 css 变量控制 外部想覆盖直接改 --yuki-icon-size 即可
+  --yuki-icon-size: 1em;
+  --yuki-icon-color: inherit;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--yuki-icon-size);
+  height: var(--yuki-icon-size);
+  line-height: 1;
+  vertical-align: middle;
+  color: var(--yuki-icon-color);
+  fill: currentColor;
+  overflow: hidden;
+  flex-shrink: 0;
+
+  //插槽里塞进来的图标(svg/img/vicons 组件)都统一撑满1em 并且跟随文字颜色
+  svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+  }
+
+  //旋转状态 一般用于loading图标
+  @include when(spin) {
+    animation: yuki-icon-spin 1.2s linear infinite;
+  }
+}
+
+//svg 小组件(比如 el 的 loading)可以直接套这个类名
+.yuki-icon-spin {
+  animation: yuki-icon-spin 1.2s linear infinite;
+}
+
+@keyframes yuki-icon-spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

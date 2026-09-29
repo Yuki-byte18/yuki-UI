@@ -1,0 +1,136 @@
+@use './mixins/mixins.scss' as *;
+
+//标签的主题色表
+$tag-types: (
+  'primary': $color-primary,
+  'success': $color-success,
+  'warning': $color-warning,
+  'danger': $color-danger,
+  'info': $color-info
+);
+
+@include b(tag) {
+  --yuki-tag-text-color: var(--yuki-text-color-regular);
+  --yuki-tag-bg-color: var(--yuki-fill-color-light);
+  --yuki-tag-border-color: var(--yuki-border-color-lighter);
+  --yuki-tag-hover-bg-color: #{dark-mix($fill-color-light, 2%)};
+
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+  padding: 0 9px;
+  border: 1px solid var(--yuki-tag-border-color);
+  border-radius: var(--yuki-border-radius-small);
+  background-color: var(--yuki-tag-bg-color);
+  color: var(--yuki-tag-text-color);
+  font-size: var(--yuki-font-size-extra-small);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+
+  //相邻的两个标签自动留间距 用的时候不用自己加margin
+  & + & {
+    margin-left: 6px;
+  }
+
+  &:hover {
+    background-color: var(--yuki-tag-hover-bg-color);
+  }
+
+  @include e(content) {
+    display: inline-block;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  //关闭的小叉 做成一个小圆点 鼠标移上去有背景色
+  @include e(close) {
+    width: 12px;
+    height: 12px;
+    padding: 1px;
+    border-radius: var(--yuki-border-radius-circle);
+    color: currentColor;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: opacity 0.2s, background-color 0.2s, transform 0.2s;
+    flex-shrink: 0;
+
+    &:hover {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.08);
+      transform: rotate(90deg);
+    }
+  }
+
+  //======================= 主题色 =======================
+  @each $type, $color in $tag-types {
+    @include m($type) {
+      //默认(light)：浅色背景 + 主题色文字
+      --yuki-tag-text-color: #{dark-mix($color, 5%)};
+      --yuki-tag-bg-color: #{light-mix($color, 90%)};
+      --yuki-tag-border-color: #{light-mix($color, 78%)};
+      --yuki-tag-hover-bg-color: #{light-mix($color, 84%)};
+
+      //dark：实心深色
+      @include when(dark) {
+        --yuki-tag-text-color: #ffffff;
+        --yuki-tag-bg-color: #{$color};
+        --yuki-tag-border-color: #{$color};
+        --yuki-tag-hover-bg-color: #{light-mix($color, 15%)};
+      }
+
+      //plain：白底描边
+      @include when(plain) {
+        --yuki-tag-text-color: #{$color};
+        --yuki-tag-bg-color: var(--yuki-fill-color-blank);
+        --yuki-tag-border-color: #{light-mix($color, 55%)};
+        --yuki-tag-hover-bg-color: #{light-mix($color, 94%)};
+      }
+    }
+  }
+
+  //没有主题色的时候的三种风格
+  @include when(dark) {
+    --yuki-tag-text-color: #ffffff;
+    --yuki-tag-bg-color: var(--yuki-text-color-secondary);
+    --yuki-tag-border-color: var(--yuki-text-color-secondary);
+    --yuki-tag-hover-bg-color: #{dark-mix($text-color-secondary, 10%)};
+  }
+
+  @include when(plain) {
+    --yuki-tag-text-color: var(--yuki-text-color-regular);
+    --yuki-tag-bg-color: var(--yuki-fill-color-blank);
+    --yuki-tag-border-color: var(--yuki-border-color);
+    --yuki-tag-hover-bg-color: var(--yuki-fill-color-light);
+  }
+
+  //======================= 尺寸 =======================
+  @include m(large) {
+    height: 28px;
+    padding: 0 12px;
+    font-size: var(--yuki-font-size-base);
+
+    //注意：这里不能再 @include e(content)
+    //因为 e 是"拼在当前选择器后面" 在 --large 里面拼会得到 .yuki-tag--large__content 这种非法bem
+    //所以用普通后代选择器写 尺寸修饰符下 内容宽度放宽一点
+    .yuki-tag__content {
+      max-width: 240px;
+    }
+  }
+
+  @include m(small) {
+    height: 20px;
+    padding: 0 6px;
+    font-size: var(--yuki-font-size-extra-small);
+  }
+
+  //======================= 形状 =======================
+  @include when(round) {
+    border-radius: var(--yuki-border-radius-round);
+  }
+}

@@ -1,0 +1,15 @@
+//组件库样式的入口文件
+//每写一个组件 就新建一个对应的 scss 文件 然后在这里 @use 进来
+//使用者只要引入这一个 index.scss 就能拿到所有组件的样式
+
+//1,先引入设计变量(css变量 挂在 :root 上)
+@use './var.scss';
+
+//2,各个组件的样式
+@use './icon.scss';
+@use './button.scss';
+@use './tag.scss';
+@use './tree.scss';
+@use './message.scss';
+@use './message-box.scss';
+@use './virtual-list.scss';

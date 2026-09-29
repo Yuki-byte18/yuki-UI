@@ -1,0 +1,211 @@
+@use './mixins/mixins.scss' as *;
+
+//按钮的主题色表：修饰符名字 => 颜色
+//用循环一次性生成 --primary/--success/... 免得复制粘贴一大堆
+$button-types: (
+  'primary': $color-primary,
+  'success': $color-success,
+  'warning': $color-warning,
+  'danger': $color-danger,
+  'info': $color-info
+);
+
+@include b(button) {
+  //把颜色抽成css变量 这样不同修饰符只要改变量 不用把color/background等重复写一遍
+  --yuki-button-text-color: var(--yuki-text-color-regular);
+  --yuki-button-bg-color: var(--yuki-fill-color-blank);
+  --yuki-button-border-color: var(--yuki-border-color);
+  --yuki-button-hover-text-color: var(--yuki-color-primary);
+  --yuki-button-hover-bg-color: var(--yuki-color-primary-light-9);
+  --yuki-button-hover-border-color: var(--yuki-color-primary-light-7);
+  --yuki-button-active-bg-color: var(--yuki-color-primary-light-8);
+  --yuki-button-active-border-color: var(--yuki-color-primary);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  height: $size-default;
+  padding: 0 15px;
+  border: 1px solid var(--yuki-button-border-color);
+  border-radius: var(--yuki-border-radius-base);
+  background-color: var(--yuki-button-bg-color);
+  color: var(--yuki-button-text-color);
+  font-size: var(--yuki-font-size-base);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
+
+  &:hover {
+    color: var(--yuki-button-hover-text-color);
+    border-color: var(--yuki-button-hover-border-color);
+    background-color: var(--yuki-button-hover-bg-color);
+  }
+
+  &:active {
+    border-color: var(--yuki-button-active-border-color);
+    background-color: var(--yuki-button-active-bg-color);
+  }
+
+  //键盘tab选中时的聚焦圈 好看又照顾无障碍
+  &:focus-visible {
+    box-shadow: 0 0 0 3px light-mix($color-primary, 80%);
+  }
+
+  //图标和文字 都是flex子项 垂直居中不跑偏
+  @include e(icon) {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.05em;
+  }
+
+  @include e(loading) {
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.05em;
+  }
+
+  @include e(text) {
+    display: inline-block;
+  }
+
+  //======================= 主题色修饰符 =======================
+  @each $type, $color in $button-types {
+    @include m($type) {
+      --yuki-button-text-color: #ffffff;
+      --yuki-button-bg-color: #{$color};
+      --yuki-button-border-color: #{$color};
+      --yuki-button-hover-bg-color: #{light-mix($color, 20%)};
+      --yuki-button-hover-border-color: #{light-mix($color, 20%)};
+      --yuki-button-active-bg-color: #{dark-mix($color, 10%)};
+      --yuki-button-active-border-color: #{dark-mix($color, 10%)};
+
+      &:focus-visible {
+        box-shadow: 0 0 0 3px #{light-mix($color, 75%)};
+      }
+
+      //朴素按钮：浅色底 + 主题色文字
+      @include when(plain) {
+        --yuki-button-text-color: #{$color};
+        --yuki-button-bg-color: #{light-mix($color, 92%)};
+        --yuki-button-border-color: #{light-mix($color, 60%)};
+        --yuki-button-hover-text-color: #ffffff;
+        --yuki-button-hover-bg-color: #{$color};
+        --yuki-button-hover-border-color: #{$color};
+        --yuki-button-active-bg-color: #{dark-mix($color, 10%)};
+        --yuki-button-active-border-color: #{dark-mix($color, 10%)};
+      }
+
+      //文字按钮：没有背景没有边框
+      @include when(link) {
+        --yuki-button-text-color: #{$color};
+        --yuki-button-bg-color: transparent;
+        --yuki-button-border-color: transparent;
+        --yuki-button-hover-text-color: #{light-mix($color, 20%)};
+        --yuki-button-hover-bg-color: transparent;
+        --yuki-button-hover-border-color: transparent;
+        --yuki-button-active-bg-color: transparent;
+        --yuki-button-active-border-color: transparent;
+      }
+    }
+  }
+
+  //默认按钮的link模式(没有主题色)
+  @include when(link) {
+    --yuki-button-bg-color: transparent;
+    --yuki-button-border-color: transparent;
+    --yuki-button-hover-bg-color: transparent;
+    --yuki-button-hover-border-color: transparent;
+    --yuki-button-active-bg-color: transparent;
+    --yuki-button-active-border-color: transparent;
+    padding: 0 4px;
+    height: auto;
+  }
+
+  //======================= 尺寸修饰符 =======================
+  @include m(large) {
+    height: $size-large;
+    padding: 0 20px;
+    font-size: var(--yuki-font-size-medium);
+    border-radius: var(--yuki-border-radius-base);
+
+    @include when(round) {
+      border-radius: $size-large;
+    }
+  }
+
+  @include m(default) {
+    height: $size-default;
+    padding: 0 15px;
+  }
+
+  @include m(small) {
+    height: $size-small;
+    padding: 0 10px;
+    font-size: var(--yuki-font-size-extra-small);
+    border-radius: var(--yuki-border-radius-small);
+
+    @include when(round) {
+      border-radius: $size-small;
+    }
+  }
+
+  //======================= 形状修饰符 =======================
+  @include when(round) {
+    border-radius: var(--yuki-border-radius-round);
+  }
+
+  @include when(circle) {
+    width: $size-default;
+    padding: 0;
+    border-radius: var(--yuki-border-radius-circle);
+  }
+
+  @include when(block) {
+    display: flex;
+    width: 100%;
+  }
+
+  //======================= 状态修饰符 =======================
+  @include when(loading) {
+    cursor: default;
+    //加载中不让hover变色 不然会以为还能点
+    &:hover {
+      color: var(--yuki-button-text-color);
+      border-color: var(--yuki-button-border-color);
+      background-color: var(--yuki-button-bg-color);
+    }
+  }
+
+  @include when(disabled) {
+    cursor: not-allowed;
+    opacity: 0.55;
+
+    &:hover,
+    &:active {
+      color: var(--yuki-button-text-color);
+      border-color: var(--yuki-button-border-color);
+      background-color: var(--yuki-button-bg-color);
+    }
+  }
+
+  //circle + large/small 的时候宽高要跟着尺寸走
+  @include m(large) {
+    @include when(circle) {
+      width: $size-large;
+    }
+  }
+
+  @include m(small) {
+    @include when(circle) {
+      width: $size-small;
+    }
+  }
+}
