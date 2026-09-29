@@ -41,7 +41,7 @@ import {
   watch,
   type ComponentPublicInstance
 } from 'vue'
-import { createNamespace } from '@yuki/utils/create'
+import { createNamespace } from '@yuki-byte/utils/create'
 import {
   virtualListProps,
   type VirtualListItem,

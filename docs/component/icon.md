@@ -21,7 +21,7 @@
 <script setup lang="ts">
 import { RocketOutline, CheckmarkCircle } from '@vicons/ionicons5'
 // 局部使用时的写法；main.ts 里 app.use(yukiIcon) 之后这一行可以省略
-import yukiIcon from '@yuki/components/icon'
+import yukiIcon from '@yuki-byte/components/icon'
 </script>
 ```
 
@@ -46,7 +46,7 @@ import yukiIcon from '@yuki/components/icon'
 
 <script setup lang="ts">
 import { RefreshOutline } from '@vicons/ionicons5'
-import yukiIcon from '@yuki/components/icon'
+import yukiIcon from '@yuki-byte/components/icon'
 </script>
 ```
 

@@ -40,7 +40,7 @@ pnpm dev            # 启动 play 演示项目，默认 http://localhost:5173/
 发布到 npm 之后，使用者的安装方式会是：
 
 ```bash
-pnpm add @yuki/components @yuki/theme-chalk
+pnpm add @yuki-byte/components @yuki-byte/theme-chalk
 ```
 
 ## 快速上手
@@ -52,10 +52,10 @@ pnpm add @yuki/components @yuki/theme-chalk
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import '@yuki/theme-chalk/src/index.scss'
+import '@yuki-byte/theme-chalk/src/index.scss'
 
-import yukiButton from '@yuki/components/button'
-import yukiTree from '@yuki/components/tree'
+import yukiButton from '@yuki-byte/components/button'
+import yukiTree from '@yuki-byte/components/tree'
 
 const app = createApp(App)
 
@@ -77,8 +77,8 @@ app.mount('#app')
 函数式组件不写在模板里，直接调用：
 
 ```ts
-import yukiMessage from '@yuki/components/message'
-import yukiMessageBox from '@yuki/components/message-box'
+import yukiMessage from '@yuki-byte/components/message'
+import yukiMessageBox from '@yuki-byte/components/message-box'
 
 yukiMessage.success('保存成功')
 
@@ -106,16 +106,16 @@ if (res.action === 'confirm') {
 
 ```
 packages/
-  components/          # 组件包 @yuki/components
+  components/          # 组件包 @yuki-byte/components
     [组件名]/
       index.ts         # withInstall 导出 + 全局组件类型声明
       src/[组件名].ts  # props 配置对象 + ExtractPropTypes 类型
       src/[组件名].vue # 组件实现（defineOptions 命名 + createNamespace 生成 BEM）
-  theme-chalk/         # 样式包 @yuki/theme-chalk
+  theme-chalk/         # 样式包 @yuki-byte/theme-chalk
     src/index.scss     # 汇总所有组件样式
     src/var.scss       # 设计变量输出成 :root 上的 CSS 变量
     src/mixins/        # SCSS 变量与 mixin（b / e / m / when ...）
-  utils/               # 工具包 @yuki/utils
+  utils/               # 工具包 @yuki-byte/utils
     create.ts          # createNamespace：生成 BEM 类名
     with-install.ts    # withInstall / withInstallFunction：给组件加 install
 play/                  # 本地演示项目（vite）

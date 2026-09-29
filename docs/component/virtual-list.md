@@ -25,7 +25,7 @@
 
 <script setup lang="ts">
 // 局部使用时的写法；main.ts 里 app.use(yukiVirtualList) 之后这一行可以省略
-import yukiVirtualList from '@yuki/components/virtual-list'
+import yukiVirtualList from '@yuki-byte/components/virtual-list'
 
 // 一万条数据也没问题
 const list = Array.from({ length: 10000 }, (_, i) => ({
@@ -52,7 +52,7 @@ const list = Array.from({ length: 10000 }, (_, i) => ({
 </template>
 
 <script setup lang="ts">
-import yukiVirtualList from '@yuki/components/virtual-list'
+import yukiVirtualList from '@yuki-byte/components/virtual-list'
 
 const list = Array.from({ length: 10000 }, (_, i) => ({
   id: i + 1,
@@ -85,7 +85,7 @@ const list = Array.from({ length: 10000 }, (_, i) => ({
 </template>
 
 <script setup lang="ts">
-import yukiVirtualList from '@yuki/components/virtual-list'
+import yukiVirtualList from '@yuki-byte/components/virtual-list'
 
 const list = Array.from({ length: 2000 }, (_, i) => ({
   id: i + 1,
@@ -119,7 +119,7 @@ const list = Array.from({ length: 2000 }, (_, i) => ({
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import yukiVirtualList from '@yuki/components/virtual-list'
+import yukiVirtualList from '@yuki-byte/components/virtual-list'
 
 let seed = 50
 const list = ref(
@@ -151,7 +151,7 @@ function loadMore() {
 </template>
 
 <script setup lang="ts">
-import yukiVirtualList from '@yuki/components/virtual-list'
+import yukiVirtualList from '@yuki-byte/components/virtual-list'
 </script>
 ```
 
@@ -177,8 +177,8 @@ import yukiVirtualList from '@yuki/components/virtual-list'
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import yukiVirtualList from '@yuki/components/virtual-list'
-import yukiButton from '@yuki/components/button'
+import yukiVirtualList from '@yuki-byte/components/virtual-list'
+import yukiButton from '@yuki-byte/components/button'
 
 const listRef = ref<any>(null)
 

@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 // 局部使用时的写法；main.ts 里 app.use(yukiTree) 之后这一行可以省略
-import yukiTree from '@yuki/components/tree'
+import yukiTree from '@yuki-byte/components/tree'
 
 const treeData = [
   {
@@ -43,7 +43,7 @@ const treeData = [
 </template>
 
 <script setup lang="ts">
-import yukiTree from '@yuki/components/tree'
+import yukiTree from '@yuki-byte/components/tree'
 
 const data = [
   { key: 'a', name: '第一层', leaf: true }
@@ -77,7 +77,7 @@ const data = [
 </template>
 
 <script setup lang="ts">
-import yukiTree from '@yuki/components/tree'
+import yukiTree from '@yuki-byte/components/tree'
 
 const treeData = [
   {
@@ -131,7 +131,7 @@ function onCheck(data: any, info: { checkedKeys: (string | number)[] }) {
 </template>
 
 <script setup lang="ts">
-import yukiTree from '@yuki/components/tree'
+import yukiTree from '@yuki-byte/components/tree'
 
 const treeData = [
   { id: '1', label: '第一组', children: [{ id: '1-1', label: '子节点' }] },
@@ -158,7 +158,7 @@ function onCurrentChange(data: any) {
 </template>
 
 <script setup lang="ts">
-import yukiTree from '@yuki/components/tree'
+import yukiTree from '@yuki-byte/components/tree'
 
 const treeData = [{ id: '1', label: '自定义文字' }]
 </script>
@@ -178,7 +178,7 @@ const treeData = [{ id: '1', label: '自定义文字' }]
 </template>
 
 <script setup lang="ts">
-import yukiTree from '@yuki/components/tree'
+import yukiTree from '@yuki-byte/components/tree'
 </script>
 ```
 
@@ -202,8 +202,8 @@ import yukiTree from '@yuki/components/tree'
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import yukiTree from '@yuki/components/tree'
-import yukiButton from '@yuki/components/button'
+import yukiTree from '@yuki-byte/components/tree'
+import yukiButton from '@yuki-byte/components/button'
 
 const treeRef = ref<any>(null)
 

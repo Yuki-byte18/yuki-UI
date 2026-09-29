@@ -2,7 +2,7 @@
 //用来把写好的组件作为组件对象导入 添加install后 变成可全局注册的插件导出
 //导出带有install方法的组件对象
 import Icon from "./src/icon.vue"
-import { withInstall } from "@yuki/utils/with-install"
+import { withInstall } from "@yuki-byte/utils/with-install"
 
 const yukiIcon = withInstall(Icon)
 export default yukiIcon

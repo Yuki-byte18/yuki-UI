@@ -8,6 +8,7 @@ play/dist/
 docs/.vitepress/dist/
 docs/.vitepress/cache/
 *.tsbuildinfo
+*.tgz
 
 # 编辑器与系统
 .vscode/*

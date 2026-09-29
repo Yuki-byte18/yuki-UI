@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { createNamespace } from '@yuki/utils/create'
+import { createNamespace } from '@yuki-byte/utils/create'
 import { tagProps } from './tag'
 
 defineOptions({

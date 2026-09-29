@@ -1,6 +1,6 @@
 import type { App } from 'vue'
 import MessageBox from './src/message-box.vue'
-import { withInstallFunction } from '@yuki/utils/with-install'
+import { withInstallFunction } from '@yuki-byte/utils/with-install'
 import {
   alertMessageBox,
   closeAll,

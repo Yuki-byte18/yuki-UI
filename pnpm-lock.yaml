@@ -8,13 +8,13 @@ importers:
 
   .:
     dependencies:
-      '@yuki/components':
+      '@yuki-byte/components':
         specifier: workspace:*
         version: link:packages/components
-      '@yuki/theme-chalk':
+      '@yuki-byte/theme-chalk':
         specifier: workspace:*
         version: link:packages/theme-chalk
-      '@yuki/utils':
+      '@yuki-byte/utils':
         specifier: workspace:*
         version: link:packages/utils
       typescript:
@@ -30,6 +30,9 @@ importers:
       '@typescript-eslint/parser':
         specifier: ^8.59.1
         version: 8.59.1(eslint@10.2.1)(typescript@5.9.3)
+      '@vitejs/plugin-vue':
+        specifier: ^6.0.6
+        version: 6.0.6(vite@8.0.10(@types/node@24.12.2)(sass@1.99.0))(vue@3.5.33(typescript@5.9.3))
       '@vue/eslint-config-typescript':
         specifier: ^14.7.0
         version: 14.7.0(eslint-plugin-vue@10.9.0(@typescript-eslint/parser@8.59.1(eslint@10.2.1)(typescript@5.9.3))(eslint@10.2.1)(vue-eslint-parser@10.4.0(eslint@10.2.1)))(eslint@10.2.1)(typescript@5.9.3)
@@ -45,6 +48,12 @@ importers:
       unplugin-vue-define-options:
         specifier: ^3.1.2
         version: 3.1.2(vue@3.5.33(typescript@5.9.3))
+      vite:
+        specifier: ^8.0.10
+        version: 8.0.10(@types/node@24.12.2)(sass@1.99.0)
+      vue-tsc:
+        specifier: ^3.2.7
+        version: 3.2.7(typescript@5.9.3)
 
   docs:
     devDependencies:
@@ -52,11 +61,22 @@ importers:
         specifier: ^1.6.4
         version: 1.6.4(@algolia/client-search@5.51.0)(@types/node@24.12.2)(lightningcss@1.32.0)(postcss@8.5.10)(sass@1.99.0)(search-insights@2.17.3)(typescript@6.0.3)
 
-  packages/components: {}
+  packages/components:
+    dependencies:
+      '@yuki-byte/utils':
+        specifier: workspace:*
+        version: link:../utils
+      vue:
+        specifier: ^3.3.0
+        version: 3.5.33(typescript@6.0.3)
 
   packages/theme-chalk: {}
 
-  packages/utils: {}
+  packages/utils:
+    dependencies:
+      vue:
+        specifier: ^3.3.0
+        version: 3.5.33(typescript@6.0.3)
 
   play:
     dependencies:
@@ -2565,6 +2585,12 @@ snapshots:
       vite: 5.4.21(@types/node@24.12.2)(lightningcss@1.32.0)(sass@1.99.0)
       vue: 3.5.33(typescript@6.0.3)
 
+  '@vitejs/plugin-vue@6.0.6(vite@8.0.10(@types/node@24.12.2)(sass@1.99.0))(vue@3.5.33(typescript@5.9.3))':
+    dependencies:
+      '@rolldown/pluginutils': 1.0.0-rc.13
+      vite: 8.0.10(@types/node@24.12.2)(sass@1.99.0)
+      vue: 3.5.33(typescript@5.9.3)
+
   '@vitejs/plugin-vue@6.0.6(vite@8.0.10(@types/node@24.12.2)(sass@1.99.0))(vue@3.5.33(typescript@6.0.3))':
     dependencies:
       '@rolldown/pluginutils': 1.0.0-rc.13
@@ -3565,6 +3591,12 @@ snapshots:
       semver: 7.7.4
     transitivePeerDependencies:
       - supports-color
+
+  vue-tsc@3.2.7(typescript@5.9.3):
+    dependencies:
+      '@volar/typescript': 2.4.28
+      '@vue/language-core': 3.2.7
+      typescript: 5.9.3
 
   vue-tsc@3.2.7(typescript@6.0.3):
     dependencies:

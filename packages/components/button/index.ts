@@ -1,7 +1,7 @@
 //每一个组件都有着一个文件
 //用来把写好的组件作为组件对象导入 添加install后 变成可全局注册的插件导出
 import Button from './src/button.vue'
-import { withInstall } from '@yuki/utils/with-install'
+import { withInstall } from '@yuki-byte/utils/with-install'
 
 const yukiButton = withInstall(Button)
 export default yukiButton

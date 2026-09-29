@@ -24,25 +24,29 @@
     "dev": "pnpm -C play dev",
     "build": "pnpm -C play build",
     "typecheck": "pnpm -C play exec vue-tsc -b",
+    "build:lib": "pnpm -C packages/utils build && pnpm -C packages/components build",
     "doc:dev": "pnpm -C docs dev",
     "doc:build": "pnpm -C docs build",
     "doc:preview": "pnpm -C docs preview"
   },
   "packageManager": "pnpm@10.33.1",
   "dependencies": {
-    "@yuki/components": "workspace:*",
-    "@yuki/theme-chalk": "workspace:*",
-    "@yuki/utils": "workspace:*",
+    "@yuki-byte/components": "workspace:*",
+    "@yuki-byte/theme-chalk": "workspace:*",
+    "@yuki-byte/utils": "workspace:*",
     "typescript": "^5.3.3",
     "vue": "^3.3.4"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^8.59.1",
     "@typescript-eslint/parser": "^8.59.1",
+    "@vitejs/plugin-vue": "^6.0.6",
     "@vue/eslint-config-typescript": "^14.7.0",
     "eslint": "^10.2.1",
     "eslint-plugin-vue": "^10.9.0",
     "sass": "^1.99.0",
-    "unplugin-vue-define-options": "^3.1.2"
+    "unplugin-vue-define-options": "^3.1.2",
+    "vite": "^8.0.10",
+    "vue-tsc": "^3.2.7"
   }
 }

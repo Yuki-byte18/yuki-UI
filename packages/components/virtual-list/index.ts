@@ -1,5 +1,5 @@
 import VirtualList from './src/virtual-list.vue'
-import { withInstall } from '@yuki/utils/with-install'
+import { withInstall } from '@yuki-byte/utils/with-install'
 
 const yukiVirtualList = withInstall(VirtualList)
 export default yukiVirtualList

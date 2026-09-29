@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 // 局部使用时的写法；main.ts 里 app.use(yukiButton) 之后这一行可以省略
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 
 function onClick(evt: MouseEvent) {
   console.log('点到了按钮', evt)
@@ -38,7 +38,7 @@ function onClick(evt: MouseEvent) {
 </template>
 
 <script setup lang="ts">
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 </script>
 ```
 
@@ -56,7 +56,7 @@ import yukiButton from '@yuki/components/button'
 </template>
 
 <script setup lang="ts">
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 </script>
 ```
 
@@ -81,7 +81,7 @@ import yukiButton from '@yuki/components/button'
 
 <script setup lang="ts">
 import { AddCircle } from '@vicons/ionicons5'
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 </script>
 ```
 
@@ -98,7 +98,7 @@ import yukiButton from '@yuki/components/button'
 </template>
 
 <script setup lang="ts">
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 </script>
 ```
 
@@ -115,7 +115,7 @@ import yukiButton from '@yuki/components/button'
 </template>
 
 <script setup lang="ts">
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 </script>
 ```
 
@@ -135,7 +135,7 @@ import yukiButton from '@yuki/components/button'
 
 <script setup lang="ts">
 import { TrashOutline } from '@vicons/ionicons5'
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 </script>
 ```
 

@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { createNamespace } from "@yuki/utils/create"
+import { createNamespace } from "@yuki-byte/utils/create"
 import { iconProps } from "./icon"
 import { computed } from "vue"
 

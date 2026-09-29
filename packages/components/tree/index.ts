@@ -1,5 +1,5 @@
 import Tree from './src/tree.vue'
-import { withInstall } from '@yuki/utils/with-install'
+import { withInstall } from '@yuki-byte/utils/with-install'
 
 const yukiTree = withInstall(Tree)
 

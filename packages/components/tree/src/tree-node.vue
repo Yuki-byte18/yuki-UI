@@ -34,7 +34,7 @@
 
 <script setup lang="ts">
 import { computed, inject, type PropType } from 'vue'
-import { createNamespace } from '@yuki/utils/create'
+import { createNamespace } from '@yuki-byte/utils/create'
 import { TREE_INJECTION_KEY, type TreeNodeData } from './tree'
 
 //递归组件：组件自己渲染自己

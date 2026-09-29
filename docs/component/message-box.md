@@ -12,9 +12,9 @@
 </template>
 
 <script setup lang="ts">
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 // 函数式调用：import 进来直接用
-import yukiMessageBox from '@yuki/components/message-box'
+import yukiMessageBox from '@yuki-byte/components/message-box'
 
 function showAlert() {
   yukiMessageBox.alert('这是一条普通的提示信息，只有一个确定按钮。', '提示', {
@@ -34,9 +34,9 @@ function showAlert() {
 </template>
 
 <script setup lang="ts">
-import yukiButton from '@yuki/components/button'
-import yukiMessageBox from '@yuki/components/message-box'
-import yukiMessage from '@yuki/components/message'
+import yukiButton from '@yuki-byte/components/button'
+import yukiMessageBox from '@yuki-byte/components/message-box'
+import yukiMessage from '@yuki-byte/components/message'
 
 async function showConfirm() {
   const res = await yukiMessageBox.confirm('确定要删除这条记录吗？删除之后不可恢复。', '删除确认', {
@@ -60,9 +60,9 @@ async function showConfirm() {
 </template>
 
 <script setup lang="ts">
-import yukiButton from '@yuki/components/button'
-import yukiMessageBox from '@yuki/components/message-box'
-import yukiMessage from '@yuki/components/message'
+import yukiButton from '@yuki-byte/components/button'
+import yukiMessageBox from '@yuki-byte/components/message-box'
+import yukiMessage from '@yuki-byte/components/message'
 
 async function showPrompt() {
   const res = await yukiMessageBox.prompt('请输入你的昵称（2 到 8 个字符）', '昵称设置', {
@@ -91,7 +91,7 @@ async function showPrompt() {
 `confirmButtonText` / `cancelButtonText` 改按钮文字，`confirmButtonType` / `cancelButtonType` 改按钮主题色（取值和按钮组件的 `type` 一样），`roundButton` 让两个按钮变圆角：
 
 ```ts
-import yukiMessageBox from '@yuki/components/message-box'
+import yukiMessageBox from '@yuki-byte/components/message-box'
 
 yukiMessageBox.confirm('要保存这次的修改吗？', '保存确认', {
   confirmButtonText: '保存',
@@ -137,7 +137,7 @@ res.action === 'cancel' ? console.log('点了取消') : console.log('直接关�
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 
 const visible = ref(false)
 

@@ -14,9 +14,9 @@ import {
   TrashOutline
 } from '@vicons/ionicons5'
 // 函数式组件：import 进来直接调用(main.ts 里 use 过之后 this.$message 也能用)
-import yukiMessage from '@yuki/components/message'
-import yukiMessageBox from '@yuki/components/message-box'
-import type { MessageType } from '@yuki/components/message'
+import yukiMessage from '@yuki-byte/components/message'
+import yukiMessageBox from '@yuki-byte/components/message-box'
+import type { MessageType } from '@yuki-byte/components/message'
 
 //=====================================================================
 //树组件的数据和事件

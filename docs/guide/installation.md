@@ -16,9 +16,9 @@ YUKI-UI 是一个 pnpm monorepo：组件、样式、工具函数、演示项目�
 
 | 包名 | 说明 |
 | --- | --- |
-| `@yuki/components` | 所有组件，每个组件一个目录，`index.ts` 里加上 `install` 后就能当插件全局注册 |
-| `@yuki/theme-chalk` | 所有样式，SCSS 变量 + 各组件样式 |
-| `@yuki/utils` | 小工具，比如 `createNamespace`（BEM 类名）、`withInstall`（给组件加 install） |
+| `@yuki-byte/components` | 所有组件，每个组件一个目录，`index.ts` 里加上 `install` 后就能当插件全局注册 |
+| `@yuki-byte/theme-chalk` | 所有样式，SCSS 变量 + 各组件样式 |
+| `@yuki-byte/utils` | 小工具，比如 `createNamespace`（BEM 类名）、`withInstall`（给组件加 install） |
 
 ## 安装依赖
 
@@ -48,9 +48,9 @@ pnpm doc:dev
 // main.ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import '@yuki/theme-chalk/src/index.scss'
+import '@yuki-byte/theme-chalk/src/index.scss'
 
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 
 const app = createApp(App)
 
@@ -65,13 +65,13 @@ app.mount('#app')
 想一次注册多个组件，放进数组统一 `use` 就行：
 
 ```ts
-import yukiIcon from '@yuki/components/icon'
-import yukiButton from '@yuki/components/button'
-import yukiTag from '@yuki/components/tag'
-import yukiTree from '@yuki/components/tree'
-import yukiMessage from '@yuki/components/message'
-import yukiMessageBox from '@yuki/components/message-box'
-import yukiVirtualList from '@yuki/components/virtual-list'
+import yukiIcon from '@yuki-byte/components/icon'
+import yukiButton from '@yuki-byte/components/button'
+import yukiTag from '@yuki-byte/components/tag'
+import yukiTree from '@yuki-byte/components/tree'
+import yukiMessage from '@yuki-byte/components/message'
+import yukiMessageBox from '@yuki-byte/components/message-box'
+import yukiVirtualList from '@yuki-byte/components/virtual-list'
 
 const plugins = [
   yukiIcon,
@@ -92,13 +92,13 @@ plugins.forEach(plugin => {
 
 | 组件 | 引入路径 | 全局标签 |
 | --- | --- | --- |
-| Icon 图标 | `@yuki/components/icon` | `<yuki-icon>` |
-| Button 按钮 | `@yuki/components/button` | `<yuki-button>` |
-| Tag 标签 | `@yuki/components/tag` | `<yuki-tag>` |
-| Tree 树形控件 | `@yuki/components/tree` | `<yuki-tree>` |
-| VirtualList 虚拟列表 | `@yuki/components/virtual-list` | `<yuki-virtual-list>` |
-| Message 消息提示 | `@yuki/components/message` | 函数式调用 `yukiMessage.success('xx')` |
-| MessageBox 消息弹窗 | `@yuki/components/message-box` | 函数式调用 + `<yuki-message-box>` |
+| Icon 图标 | `@yuki-byte/components/icon` | `<yuki-icon>` |
+| Button 按钮 | `@yuki-byte/components/button` | `<yuki-button>` |
+| Tag 标签 | `@yuki-byte/components/tag` | `<yuki-tag>` |
+| Tree 树形控件 | `@yuki-byte/components/tree` | `<yuki-tree>` |
+| VirtualList 虚拟列表 | `@yuki-byte/components/virtual-list` | `<yuki-virtual-list>` |
+| Message 消息提示 | `@yuki-byte/components/message` | 函数式调用 `yukiMessage.success('xx')` |
+| MessageBox 消息弹窗 | `@yuki-byte/components/message-box` | 函数式调用 + `<yuki-message-box>` |
 
 Message 和 MessageBox 是函数式组件，`app.use` 之后会挂在全局属性上（`this.$message` / `this.$messageBox`），组件式用法看各自的文档。
 
@@ -106,7 +106,7 @@ Message 和 MessageBox 是函数式组件，`app.use` 之后会挂在全局属�
 
 ```vue
 <script setup lang="ts">
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 </script>
 
 <template>
@@ -120,12 +120,12 @@ import yukiButton from '@yuki/components/button'
 
 ```ts
 // main.ts 里引一次就够了
-import '@yuki/theme-chalk/src/index.scss'
+import '@yuki-byte/theme-chalk/src/index.scss'
 ```
 
 ## 自定义主题
 
-主题相关的变量都集中在 `@yuki/theme-chalk` 里：
+主题相关的变量都集中在 `@yuki-byte/theme-chalk` 里：
 
 - `packages/theme-chalk/src/mixins/config.scss`：SCSS 变量（设计令牌），编译期决定最终样式
 - `packages/theme-chalk/src/var.scss`：把上面的变量输出成 `:root` 上的 CSS 变量，样式里写 `var(--yuki-xxx)` 的地方都能在运行时被覆盖

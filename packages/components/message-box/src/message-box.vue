@@ -85,7 +85,7 @@
 
 <script setup lang="ts">
 import { computed, h, nextTick, onUnmounted, ref, watch } from 'vue'
-import { createNamespace } from '@yuki/utils/create'
+import { createNamespace } from '@yuki-byte/utils/create'
 import { messageBoxProps, type MessageBoxAction, type MessageBoxType } from './message-box'
 //弹窗里的按钮直接用我们自己的按钮组件 不用另外写一遍样式
 import YukiButton from '../../button/src/button.vue'

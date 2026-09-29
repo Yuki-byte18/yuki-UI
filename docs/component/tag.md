@@ -18,7 +18,7 @@
 
 <script setup lang="ts">
 // 局部使用时的写法；main.ts 里 app.use(yukiTag) 之后这一行可以省略
-import yukiTag from '@yuki/components/tag'
+import yukiTag from '@yuki-byte/components/tag'
 </script>
 ```
 
@@ -40,7 +40,7 @@ import yukiTag from '@yuki/components/tag'
 </template>
 
 <script setup lang="ts">
-import yukiTag from '@yuki/components/tag'
+import yukiTag from '@yuki-byte/components/tag'
 </script>
 ```
 
@@ -58,7 +58,7 @@ import yukiTag from '@yuki/components/tag'
 </template>
 
 <script setup lang="ts">
-import yukiTag from '@yuki/components/tag'
+import yukiTag from '@yuki-byte/components/tag'
 </script>
 ```
 
@@ -83,7 +83,7 @@ import yukiTag from '@yuki/components/tag'
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import yukiTag from '@yuki/components/tag'
+import yukiTag from '@yuki-byte/components/tag'
 
 const cities = ref(['北京', '上海', '广州'])
 
@@ -103,7 +103,7 @@ function removeCity(city: string) {
 </template>
 
 <script setup lang="ts">
-import yukiTag from '@yuki/components/tag'
+import yukiTag from '@yuki-byte/components/tag'
 </script>
 ```
 

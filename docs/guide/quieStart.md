@@ -18,10 +18,10 @@ import { createApp } from 'vue'
 import App from './App.vue'
 
 // 引入组件库的全部样式（里面已经汇总了每个组件的 scss）
-import '@yuki/theme-chalk/src/index.scss'
+import '@yuki-byte/theme-chalk/src/index.scss'
 
 // 按需引入：用哪个组件就引哪个
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 
 const app = createApp(App)
 
@@ -76,16 +76,16 @@ Message 和 MessageBox 不需要写在模板里，import 进来直接调用：
 
 ```ts
 // main.ts 里注册一下，之后 this.$message / this.$messageBox 也能用
-import yukiMessage from '@yuki/components/message'
-import yukiMessageBox from '@yuki/components/message-box'
+import yukiMessage from '@yuki-byte/components/message'
+import yukiMessageBox from '@yuki-byte/components/message-box'
 
 app.use(yukiMessage)
 app.use(yukiMessageBox)
 ```
 
 ```ts
-import yukiMessage from '@yuki/components/message'
-import yukiMessageBox from '@yuki/components/message-box'
+import yukiMessage from '@yuki-byte/components/message'
+import yukiMessageBox from '@yuki-byte/components/message-box'
 
 // 消息提示：同步返回一个 handler，可以手动关闭
 yukiMessage.success('操作成功')

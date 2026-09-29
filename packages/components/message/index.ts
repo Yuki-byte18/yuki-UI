@@ -1,6 +1,6 @@
 import { isVNode } from 'vue'
 import Message from './src/message.vue'
-import { withInstallFunction } from '@yuki/utils/with-install'
+import { withInstallFunction } from '@yuki-byte/utils/with-install'
 import { closeAll, createMessage } from './src/method'
 import type {
   MessageHandler,

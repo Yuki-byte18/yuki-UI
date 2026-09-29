@@ -10,9 +10,9 @@
 </template>
 
 <script setup lang="ts">
-import yukiButton from '@yuki/components/button'
+import yukiButton from '@yuki-byte/components/button'
 // 函数式调用：import 进来直接调，不用写进模板
-import yukiMessage from '@yuki/components/message'
+import yukiMessage from '@yuki-byte/components/message'
 
 function open() {
   yukiMessage.success('操作成功')
@@ -23,7 +23,7 @@ function open() {
 不带任何快捷方法时，`yukiMessage` 本身也是一个函数，等价于直接把配置对象丢进去：
 
 ```ts
-import yukiMessage from '@yuki/components/message'
+import yukiMessage from '@yuki-byte/components/message'
 
 yukiMessage('这是一条普通消息')
 yukiMessage({ message: '带配置的消息', type: 'warning', showClose: true })
@@ -44,8 +44,8 @@ yukiMessage({ message: '带配置的消息', type: 'warning', showClose: true })
 </template>
 
 <script setup lang="ts">
-import yukiButton from '@yuki/components/button'
-import yukiMessage from '@yuki/components/message'
+import yukiButton from '@yuki-byte/components/button'
+import yukiMessage from '@yuki-byte/components/message'
 </script>
 ```
 
@@ -60,7 +60,7 @@ import yukiMessage from '@yuki/components/message'
 鼠标移上去会暂停倒计时，移开之后重新计时。
 
 ```ts
-import yukiMessage from '@yuki/components/message'
+import yukiMessage from '@yuki-byte/components/message'
 
 yukiMessage({
   message: '不会自动关闭的消息',
@@ -103,7 +103,7 @@ yukiMessage({
 调用会同步返回一个 `MessageHandler`，拿到它就能手动关掉这一条；`closeAll` 关掉全部（传类型就只关这一种类型）：
 
 ```ts
-import yukiMessage from '@yuki/components/message'
+import yukiMessage from '@yuki-byte/components/message'
 
 const handler = yukiMessage({
   message: '手动关闭的消息',
@@ -160,7 +160,7 @@ yukiMessage.closeAll('success')
 
 ### Props
 
-组件式使用（`import { YukiMessage } from '@yuki/components/message'`）时的 props，和上面函数式调用的 options 完全一致：
+组件式使用（`import { YukiMessage } from '@yuki-byte/components/message'`）时的 props，和上面函数式调用的 options 完全一致：
 
 | 属性名 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
